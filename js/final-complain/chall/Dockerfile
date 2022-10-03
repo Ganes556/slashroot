@@ -20,9 +20,11 @@ ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true \
     PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
 
 RUN npm install
-
+# RUN npm install -g nodemon
 USER anonim
 
-EXPOSE 4000
+EXPOSE 20203
+
+# CMD ["nodemon","index.js"]
 
 CMD [ "npm", "start"]

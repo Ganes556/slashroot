@@ -14,6 +14,7 @@ const authSchema = new mongoose.Schema({
         default: "user"
     }
 })
+
 const complainSchema = new mongoose.Schema({
     username: String,
     complain: String

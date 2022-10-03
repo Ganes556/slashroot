@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/styles.css">
+        <title>Cek Umur</title>
+    </head>
+    <body>    
+    <div class="h-100 p-20 w-full flex flex-col items-center justify-center font-sans">    
+        <h1 class="text-5xl font-bold text-blue-400 mb-4">Cek Umur!</h1> 
+        <form action="/" method="get">            
+            <input placeholder='nama' class='border-2 rounded-sm shadow-sm px-2 py-1 focus:outline-none focus:border-blue-400' type="text" name="nama" id="name">
+            <input placeholder='tahun lahir' class='border-2 rounded-sm shadow-sm px-2 py-1 focus:outline-none focus:border-blue-400' type="number" name="umur" id="name">
+            <button class='border-2 px-4 active:bg-blue-300 active:text-white rounded-sm shadow-sm py-1' type="submit">Check</button>
+        </form>
+        <% if(${umur}) { %>
+            <h5 class='pt-3 text-green-400'>Halo ${nama}</h5>
+            <h5 class='pt-1 text-green-400'>Umur kamu :  <%= new Date().getFullYear() - ${umur} %> Tahun</h5>        
+        <% } %>
+    </div>
+    </body>
+    </html>

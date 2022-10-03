@@ -7,7 +7,7 @@ export const runBot =  async (username) => {
         args: ['--no-sandbox', '--headless', '--disable-gpu', '--disable-dev-shm-usage']
     })
     const page = await browser.newPage()
-    await page.goto("http://localhost:4000/")
+    await page.goto("http://localhost:20203/")
     await page.type("#username","admin")
     await page.type("#password","c6d8feccacae78e572c3eed8972e6fa61e164b97b510335ef0")
     await page.click(".btn")     
@@ -16,7 +16,7 @@ export const runBot =  async (username) => {
     const page2 = await browser.newPage()
 
     await page2.setCookie(...cookies)    
-    await page2.goto("http://localhost:4000/complain/" + username)
+    await page2.goto("http://localhost:20203/complain/" + username)
     
-    await browser.close();
+    // await browser.close();
 }

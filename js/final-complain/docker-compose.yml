@@ -1,5 +1,5 @@
-version: '3'
-
+version: '3.8'
+name: 'complaint'
 services:
   mongo:
     container_name: mongo
@@ -11,14 +11,13 @@ services:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: 8c18e23138bc5240468600b2a646bda2958303d7c69bdfed94
 
-  app:
-    container_name: app
+  complaint:
+    container_name: complaint
     restart: always
-    image: app
+    image: complaint
     build: 
-      context: ./soal
+      context: ./chall
     links: 
       - mongo
     ports: 
-      - "4000:4000"
-      
+      - "20203:20203"

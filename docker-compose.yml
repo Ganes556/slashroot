@@ -1,0 +1,86 @@
+# version: '3'
+
+# services:
+#   # chall1:
+#   #   image: check_age-web
+#   #   container_name: slashroot6-check_age-web
+#   #   restart: always
+#   #   build:
+#   #     context: ./js/checkAge/chall
+#   #   ports:
+#   #     - 20201:20201
+
+#   # chall2:
+#   #   image: guessing_number-web
+#   #   container_name: slashroot6-guessing_number-web
+#   #   restart: always
+#   #   build: 
+#   #     context: ./python/soal/guessingNumber/app
+#   #   ports:
+#   #     - 20202:20202
+
+#   chall3:
+#     image: complaint-web
+#     container_name: slashroot6-complaint-web
+#     restart: always
+#     build: 
+#       context: ./js/complaint/chall
+#     links: 
+#       - mongo
+#     ports: 
+#       - 20203:20203
+
+#   mongo:
+#     image: mongo
+#     container_name: mongo
+#     restart: always
+#     ports:
+#       - 27017:27017
+#     environment:
+#       MONGO_INITDB_ROOT_USERNAME: root
+#       MONGO_INITDB_ROOT_PASSWORD: 8c18e23138bc5240468600b2a646bda2958303d7c69bdfed94
+  
+
+version: '3'
+
+services:
+  chall1:
+    image: check_age-web
+    container_name: slashroot6-check_age-web
+    restart: always
+    build:
+      context: ./checkAge
+    ports:
+      - 20201:20201
+
+  chall2:
+    image: guessing_number-web
+    container_name: slashroot6-guessing_number-web
+    restart: always
+    build: 
+      context: ./guessingNumber
+    ports:
+      - 20202:20202
+
+  chall3:
+    image: complain-web
+    container_name: slashroot6-complain-web
+    restart: always
+    build: 
+      context: ./complain
+    links: 
+      - mongo
+    ports: 
+      - 20203:20203
+
+  mongo:
+    image: mongo:4.4.6
+    command: mongod --port 27018
+    container_name: mongo-chall3
+    restart: always
+    ports:
+      - 27018:27018
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: 8c18e23138bc5240468600b2a646bda2958303d7c69bdfed94
+  

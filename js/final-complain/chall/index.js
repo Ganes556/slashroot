@@ -29,7 +29,7 @@ if(!checkAdmin){
 }
 
 const app = express();
-let adminCook = ''
+
 app.set("view engine", "ejs");
 
 app.use(helmet({
@@ -192,7 +192,7 @@ app.post("/complain", async (req, res) => {
                     }
                 });
 
-                runBot(username, adminCook)
+                runBot(username)
                 .catch(async err => {
                     console.log(err)
                     await complain.deleteMany({ username });
@@ -272,5 +272,5 @@ app.get("/welcome", async (req, res) => {
 })
 
 app.use((_, res) => res.sendStatus(404));
-const port = 4000
+const port = 20203
 app.listen(port, () => console.log(`listening on port ${port}`));

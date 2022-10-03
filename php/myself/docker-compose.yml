@@ -1,0 +1,22 @@
+version: '3.1'
+
+services:
+  mysql:
+    image: mysql:latest
+    container_name: mysql_container
+    ports:
+      - 3306:3306
+    volumes:
+      - ./todos.sql:/docker-entrypoint-initdb.d/todos.sql
+    environment:
+      MYSQL_ROOT_PASSWORD: random123123123123123
+      MYSQL_DATABASE: todos
+
+  app:
+    build: 
+      context: ./app
+    ports:
+      - 80:5000
+    
+    
+      
