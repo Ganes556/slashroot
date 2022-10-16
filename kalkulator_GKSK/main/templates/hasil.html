@@ -1,0 +1,10 @@
+{% extends "index.html"  %}
+{% block hasil %}
+    <div class="hasil">
+        {% if data["hasil"] == "error..." %}
+            <h5 class='d-inline text-danger'>Apakah anda mendapatkan source code, website ini?</h5> 
+            {% else %}
+            <h5 class='d-inline text-success'>Hasil: {{data["hasil"]}},</h5> <h6 class='d-inline'><a href={{"/history?for="+ data["history"]}} target="_blank">history</a></h6>
+        {% endif %}
+    </div>
+{% endblock %}

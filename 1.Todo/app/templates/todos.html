@@ -1,0 +1,17 @@
+{% extends "layout.html"  %}
+{% block main %}    
+    <main class="d-flex">
+        <div class="w-50 m-auto">
+            <h2 class="text-center mb-3">Your Todos</h2>
+            <ul class="list-group">
+              {% for todo in data['todos'] %}
+                {% if loop.index % 2 == 1 %}
+                    <li class="list-group-item ">{{ todo }}</li>
+                {% else %}
+                    <li class="list-group-item list-group-item-secondary">{{ todo }}</li>
+                {% endif %}
+              {% endfor %}
+            </ul>
+        </div>
+    </main>
+{% endblock %}

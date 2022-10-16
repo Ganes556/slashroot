@@ -1,0 +1,10 @@
+{% extends "index.html"  %}
+{% block hasil %}
+    <div class="hasil">
+        {% if data["hasil"] == "error..." %}
+            <h5 class='d-inline text-danger'>Terjadi sesuatu, coba cek dulu source codenya!</h5> 
+        {% else %}
+            <h5 class='d-inline text-success'>Hasil: {{data["hasil"]}}</h5>
+        {% endif %}
+    </div>
+{% endblock %}

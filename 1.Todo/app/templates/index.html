@@ -1,0 +1,24 @@
+{% extends "layout.html"  %}
+{% block main %}    
+    <main class="d-flex">
+        <div class="w-50 m-auto">
+            <h2 class="text-center mb-3">Don't forget, what do you want to do...</h2>
+            {% if data['success'] %}
+              <div class="alert alert-success" role="alert">
+                  Successfully saved your TODO!
+              </div>            
+            {% endif %}
+            <form action="/" method="post">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" list="datalistOptions" id="floatingInput" placeholder="Your Todo" name="todo">
+                    <label for="floatingInput">Save Your Todo...</label>
+                </div>
+            </form>
+            <ul class="list-group">
+              {% for todo in data['recently_todos'] %}
+                <li class="list-group-item">{{ todo }}</li>
+              {% endfor %}
+            </ul>
+        </div>
+    </main>
+{% endblock %}

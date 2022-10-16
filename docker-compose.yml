@@ -1,0 +1,52 @@
+version: '3'
+services:
+  chall1:
+    image: todo-web
+    container_name: slashroot6-final-todo-web
+    restart: always
+    build:
+      context: ./1.Todo/app
+    ports:
+      - 21201:21201
+
+  chall2:
+    image: kalkulator_slashroot6-web
+    container_name: slashroot6-final-kalkulator_slashroot6-web
+    restart: always
+    build: 
+      context: ./2.Kalkulator_Slashroot6/app
+    ports: 
+      - 21202:21202
+      
+  chall3:
+    image: trickation-2-web
+    container_name: slashroot6-final-trickation-2-web-web
+    restart: always
+    build: 
+      context: ./3.Trickation2/app
+    ports: 
+      - 21203:80
+    
+  chall4:
+    image: complain-web
+    container_name: slashroot6-final-complain-web
+    restart: always
+    build: 
+      context: ./4.Complain/app
+    links: 
+      - mongo
+    ports: 
+      - 21204:21204
+
+  mongo:
+    image: mongo:4.4.6
+    command: mongod --port 27018
+    container_name: mongo-chall-final-4
+    restart: always
+    ports:
+      - 27018:27018
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: 8c18e23138bc5240468600b2a646bda2958303d7c69bdfed94
+    
+

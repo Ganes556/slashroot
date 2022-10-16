@@ -1,0 +1,3 @@
+from flask import render_template
+safe_eval = lambda expr, exec_eval = lambda expr : str(eval(expr, {'__builtins__':{}},{})), checking = lambda expr: [[True if len(expr) > 405 else False],{True for i in ["builtins","**","popen","os","eval","exec","'",'"',"]","["," "] if i in expr}] : (lambda check=checking(expr) : "error..." if check[0][0] or len(check[1]) > 0 else exec_eval(expr))()
+template_index = lambda conditions : render_template("hasil.html",data={"hasil": safe_eval(conditions)})

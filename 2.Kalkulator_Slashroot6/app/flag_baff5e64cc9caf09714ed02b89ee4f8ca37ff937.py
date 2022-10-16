@@ -1,0 +1,1 @@
+# slashroot6{d0_y0u_think_eval_is_evil?} -> flag
